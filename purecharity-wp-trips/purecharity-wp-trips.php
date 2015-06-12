@@ -145,7 +145,6 @@ function purecharity_wp_trips_updater() {
       'slug' => plugin_basename( __FILE__ ),
       'proper_folder_name' => 'purecharity-wp-trips',
       'api_url' => 'https://api.github.com/repos/purecharity/pure-trips',
-      'raw_url' => 'https://raw.github.com/purecharity/pure-trips/master',
       'raw_url' => 'https://raw.githubusercontent.com/purecharity/pure-trips/master/purecharity-wp-trips/',
       'github_url' => 'https://github.com/purecharity/pure-trips',
       'zip_url' => 'https://github.com/purecharity/pure-trips/archive/master.zip',
