@@ -16,7 +16,7 @@
  * Plugin Name:       Pure Charity Trips
  * Plugin URI:        http://purecharity.com/purecharity-wp-trips-uri/
  * Description:       A shortcode to list Trips from the Pure Charity App with links to sign up for it
- * Version:           1.0.3
+ * Version:           1.0.4
  * Author:            Rafael Dalprá / Pure Charity
  * Author URI:        http://purecharity.com/
  * License:           GPL-2.0+
@@ -129,4 +129,32 @@ function gt_force_template() {
   $options = get_option( 'purecharity_trips_settings' );
   include(TEMPLATEPATH . '/' . $options['single_view_template']);
   exit;
+}
+
+/*
+ * Plugin updater using GitHub
+ *
+ * Auto Updates through GitHub
+ *
+ * @since   1.0.4
+ */
+add_action( 'init', 'purecharity_wp_trips_updater' );
+function purecharity_wp_trips_updater() {
+  if ( is_admin() ) { 
+    $tr_config = array(
+      'slug' => plugin_basename( __FILE__ ),
+      'proper_folder_name' => 'purecharity-wp-trips',
+      'api_url' => 'https://api.github.com/repos/purecharity/pure-trips',
+      'raw_url' => 'https://raw.github.com/purecharity/pure-trips/master',
+      'raw_url' => 'https://raw.githubusercontent.com/purecharity/pure-trips/master/purecharity-wp-trips/',
+      'github_url' => 'https://github.com/purecharity/pure-trips',
+      'zip_url' => 'https://github.com/purecharity/pure-trips/archive/master.zip',
+      'sslverify' => true,
+      'requires' => '3.0',
+      'tested' => '3.3',
+      'readme' => 'README.md',
+      'access_token' => '',
+    );
+    new WP_GitHub_Updater( $tr_config );
+  }
 }
