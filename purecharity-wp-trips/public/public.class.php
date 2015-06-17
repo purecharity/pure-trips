@@ -305,8 +305,7 @@ class Purecharity_Wp_Trips_Public {
 						<div class="pctrip-sidebarsection">
 							<h4>Trip Information</h4>
 							<p><strong>Trip Type:</strong> '.self::print_trip_types().'</p>
-							<p><strong>Region:</strong> '.self::$event->region.'</p>
-							<p><strong>Country:</strong> '.self::$event->country.'</p>
+							<p><strong>Location:</strong> '.self::$event->location.'</p>
 							'.self::print_trip_tags().'
 						</div>
 
