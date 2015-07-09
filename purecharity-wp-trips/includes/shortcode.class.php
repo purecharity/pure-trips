@@ -85,9 +85,6 @@ class Purecharity_Wp_Trips_Shortcode {
 
     $opts['date'] = self::is_past($opts['past']);
 
-    // var_dump($opts);
-    // exit;
-
     if(isset($_GET['event_id'])){
       $options = array();
       $options['event_id'] = $_GET['event_id'];
