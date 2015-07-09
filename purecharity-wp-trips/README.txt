@@ -30,6 +30,9 @@ directory take precedence. For example, `/assets/screenshot-1.png` would win ove
 
 == Changelog ==
 
+= 1.0.5 =
+* Added new listing shortcode option: past.
+
 = 1.0.4 =
 * Added GitHub updater process.
 

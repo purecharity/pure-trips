@@ -59,7 +59,7 @@ class Purecharity_Wp_Trips_Shortcode {
 
   /**
    * Initialize the Trips Listing shortcode.
-   * 
+   *
    * TODO: Document possible options.
    *
    * @since    1.0.0
@@ -72,6 +72,7 @@ class Purecharity_Wp_Trips_Shortcode {
       'region'    => get_query_var('region'),
       'cause'     => get_query_var('cause'),
       'date'      => get_query_var('date'),
+      'past'      => get_query_var('past'),
       'upcoming'  => get_query_var('upcoming'),
       'grid'      => get_query_var('grid'),
       'tag'       => get_query_var('tag'),
@@ -81,6 +82,8 @@ class Purecharity_Wp_Trips_Shortcode {
       'query'     => (isset($_GET['query']) ? $_GET['query'] : get_query_var('query')),
       'page'      => (isset($_GET['_page']) ? $_GET['_page'] : get_query_var('_page'))
     ), $atts );
+
+    $opts['date'] = self::is_past($opts['past']);
 
     if(isset($_GET['event_id'])){
       $options = array();
@@ -97,8 +100,22 @@ class Purecharity_Wp_Trips_Shortcode {
           return Purecharity_Wp_Trips_Public::listing();
         }
       }else{
-        return Purecharity_Wp_Trips_Public::list_not_found();        
+        return Purecharity_Wp_Trips_Public::list_not_found();
       };
+    }
+
+  }
+
+  /**
+   * Adds parameter to show only past trips.
+   *
+   * @since    1.0.5
+   */
+  public static function is_past($past){
+    if($past == "true"){
+      return "01/01/1980-".date('d/m/Y');
+    }else{
+      return "";
     }
 
   }
@@ -120,7 +137,7 @@ class Purecharity_Wp_Trips_Shortcode {
         Purecharity_Wp_Trips_Public::$event = $event;
         return Purecharity_Wp_Trips_Public::show();
       }else{
-        return Purecharity_Wp_Trips_Public::not_found();       
+        return Purecharity_Wp_Trips_Public::not_found();
       }
 
     }
@@ -131,11 +148,11 @@ class Purecharity_Wp_Trips_Shortcode {
    * Internal: Filters out empy values from an associative array.
    *
    * Returns an Array.
-   * 
+   *
    * @since    1.0.0
    */
   public static function filtered_opts($opts = array()) {
-    
+
     $filtered_opts = array();
     foreach($opts as $k => $v) {
       if($v != null && $v != '') {
