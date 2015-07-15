@@ -21,6 +21,9 @@ Possible parameters:
 * `country` - The country to fetch trips from.
 * `region` - The region to fetch events from.
 * `query` - A search query for trips.
+* `starts_at` - YYYY-MM-DD date to only show trips that start after that date.
+* `ends_at` - YYYY-MM-DD date to only show trips that start before that date.
+* `past` - 'true' if you only want to show past trips.
 * `upcoming` - set to true if you only want to show events starting in the future
 * `tag` - A tag to filter trips.
 * `sort` - Sort direction.
@@ -35,7 +38,7 @@ Possible parameters:
 
 ### Trip List
 
-Function: 
+Function:
 `pc_trips()`
 
 Parameters:
@@ -92,7 +95,7 @@ Return Object Attributes:
 	* `medium` - string
 	* `small` - string
 * `trip_tags` - array of strings
-* `public_url` - string 
+* `public_url` - string
 
 Example (Show the name and description of a trip on your custom page):
 
@@ -100,11 +103,11 @@ Example (Show the name and description of a trip on your custom page):
 	<?php $trip = pc_trip(201); ?>
 	<h1><?php echo $trip->name ?></h1>
 	<p><?php echo $trip->about ?></p>
-``` 
+```
 
 ### Single Trip Information
 
-Function: 
+Function:
 `pc_trip($id)`
 
 Parameters:
@@ -145,7 +148,7 @@ Return Object Attributes:
 	* `medium` - string
 	* `small` - string
 * `trip_tags` - array of strings
-* `public_url` - string 
+* `public_url` - string
 
 Example (Show a list of events):
 
@@ -159,7 +162,7 @@ Example (Show a list of events):
 
 ### Regions list
 
-Function: 
+Function:
 `pc_trip_regions()`
 
 Returns:
@@ -183,7 +186,7 @@ Example (Show a list of regions):
 
 ### Countries list
 
-Function: 
+Function:
 `pc_trip_countries()`
 
 Returns:
@@ -205,7 +208,7 @@ Example (Show a list of countries):
 
 ### Dates list
 
-Function: 
+Function:
 `pc_trip_dates()`
 
 Returns:
@@ -228,7 +231,7 @@ Example (Show a list of dates):
 
 ### Tags list
 
-Function: 
+Function:
 `pc_trip_tags()`
 
 Returns:
@@ -250,12 +253,12 @@ Example (Show a list of tags):
 
 ## Installation
 
-Search and replace the entire folder (all Case Sensitive): 
+Search and replace the entire folder (all Case Sensitive):
 
-1. purecharity-wp-trips > plugin-name 
-2. Purecharity_Wp_Trips > Plugin_Name 
-3. purecharity_wp_trips > plugin_name 
-3. Pure Charity Trips > Plugin Name 
+1. purecharity-wp-trips > plugin-name
+2. Purecharity_Wp_Trips > Plugin_Name
+3. purecharity_wp_trips > plugin_name
+3. Pure Charity Trips > Plugin Name
 4. `Pure Charity <dev@purecharity.com>` > `Foo Bar <you@server.com>` (Your name and E-mail)
 
 The Boilerplate can be installed in one of two ways both of which are documented below. Note that because of its directory structure, the Boilerplate cannot be installed “as-is.”

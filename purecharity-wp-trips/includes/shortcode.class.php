@@ -70,8 +70,9 @@ class Purecharity_Wp_Trips_Shortcode {
       'limit'     => 10,
       'country'   => get_query_var('country'),
       'region'    => get_query_var('region'),
-      'cause'     => get_query_var('cause'),
-      'date'      => get_query_var('date'),
+      'cause'     => get_query_var('cause')
+      'starts_at' => get_query_var('starts_at'),
+      'ends_at'   => get_query_var('ends_at'),
       'past'      => get_query_var('past'),
       'upcoming'  => get_query_var('upcoming'),
       'grid'      => get_query_var('grid'),
@@ -83,7 +84,10 @@ class Purecharity_Wp_Trips_Shortcode {
       'page'      => (isset($_GET['_page']) ? $_GET['_page'] : get_query_var('_page'))
     ), $atts );
 
-    $opts['date'] = self::is_past($opts['past']);
+    $opts['ends_at'] = self::is_past($opts['past']);
+
+    // var_dump($opts);
+    // exit;
 
     if(isset($_GET['event_id'])){
       $options = array();
@@ -113,7 +117,7 @@ class Purecharity_Wp_Trips_Shortcode {
    */
   public static function is_past($past){
     if($past == "true"){
-      return "01/01/1980-".date('d/m/Y');
+      return date('d/m/Y');
     }else{
       return "";
     }
