@@ -70,7 +70,7 @@ class Purecharity_Wp_Trips_Shortcode {
       'limit'     => 10,
       'country'   => get_query_var('country'),
       'region'    => get_query_var('region'),
-      'cause'     => get_query_var('cause')
+      'cause'     => get_query_var('cause'),
       'starts_at' => get_query_var('starts_at'),
       'ends_at'   => get_query_var('ends_at'),
       'past'      => get_query_var('past'),
