@@ -120,6 +120,25 @@ function purecharity_trips(){
   return $base_plugin->api_call('events/?' . http_build_query(Purecharity_Wp_Trips_Shortcode::filtered_opts($opts)))->events;
 }
 
+
+/**
+ * Sets the meta tags for the facebook sharing.
+ *
+ * @since    1.0.6
+ */
+add_action( 'wp_head', 'set_meta_tags' );
+function set_meta_tags(){
+	if(isset($_GET['event_id'])){
+		$base_plugin = new Purecharity_Wp_Base();
+		$event = $base_plugin->api_call('events/'. $_GET['event_id']);
+		echo '
+			<meta property="og:title" content="'.$event->name.'">
+			<meta property="og:image" content="'.$event->images->small.'">
+			<meta property="og:description" content="'.$event->about.'">
+		' . "\n";
+	}
+}
+
 /**
  * Force the use of a specific template
  *
