@@ -40,7 +40,6 @@ class Purecharity_Wp_Trips_Shortcode {
   public function __construct() {
     $this->actions = array();
     $this->filters = array();
-
   }
 
   /**
@@ -50,8 +49,10 @@ class Purecharity_Wp_Trips_Shortcode {
    */
   public static function init()
   {
+
     if(Purecharity_Wp_Trips::base_present()){
       add_shortcode('trips', array('Purecharity_Wp_Trips_Shortcode', 'trips_shortcode'));
+      add_shortcode('trip', array('Purecharity_Wp_Trips_Shortcode', 'trip_shortcode'));
 
       self::$base_plugin = new Purecharity_Wp_Base();
     }
@@ -85,9 +86,6 @@ class Purecharity_Wp_Trips_Shortcode {
     ), $atts );
 
     $opts['ends_at'] = self::is_past($opts['past']);
-
-    // var_dump($opts);
-    // exit;
 
     if(isset($_GET['event_id'])){
       $options = array();
