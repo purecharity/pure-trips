@@ -126,8 +126,8 @@ function purecharity_trips(){
  *
  * @since    1.0.6
  */
-add_action( 'wp_head', 'set_meta_tags' );
-function set_meta_tags(){
+add_action( 'wp_head', 'set_pt_meta_tags' );
+function set_pt_meta_tags(){
 	if(isset($_GET['event_id'])){
 		$base_plugin = new Purecharity_Wp_Base();
 		$event = $base_plugin->api_call('events/'. $_GET['event_id']);
