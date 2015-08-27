@@ -132,9 +132,9 @@ function set_pt_meta_tags(){
 		$base_plugin = new Purecharity_Wp_Base();
 		$event = $base_plugin->api_call('events/'. $_GET['event_id'])->event;
 		echo '
-			<meta property="og:title" content="'.$event->name.'">
+			<meta property="og:title" content="'.strip_tags($event->name).'">
 			<meta property="og:image" content="'.$event->images->small.'">
-			<meta property="og:description" content="'.$event->about.'">
+			<meta property="og:description" content="'.strip_tags($event->about).'">
 		' . "\n";
 	}
 }
