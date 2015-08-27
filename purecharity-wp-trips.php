@@ -16,7 +16,7 @@
  * Plugin Name:       Pure Charity Trips
  * Plugin URI:        http://purecharity.com/purecharity-wp-trips-uri/
  * Description:       A shortcode to list Trips from the Pure Charity App with links to sign up for it
- * Version:           1.0.4
+ * Version:           1.0.7
  * Author:            Rafael Dalprá / Pure Charity
  * Author URI:        http://purecharity.com/
  * License:           GPL-2.0+
@@ -120,6 +120,25 @@ function purecharity_trips(){
   return $base_plugin->api_call('events/?' . http_build_query(Purecharity_Wp_Trips_Shortcode::filtered_opts($opts)))->events;
 }
 
+
+/**
+ * Sets the meta tags for the facebook sharing.
+ *
+ * @since    1.0.6
+ */
+add_action( 'wp_head', 'set_pt_meta_tags' );
+function set_pt_meta_tags(){
+	if(isset($_GET['event_id'])){
+		$base_plugin = new Purecharity_Wp_Base();
+		$event = $base_plugin->api_call('events/'. $_GET['event_id'])->event;
+		echo '
+			<meta property="og:title" content="'.$event->name.'">
+			<meta property="og:image" content="'.$event->images->small.'">
+			<meta property="og:description" content="'.$event->about.'">
+		' . "\n";
+	}
+}
+
 /**
  * Force the use of a specific template
  *
@@ -140,7 +159,7 @@ function gt_force_template() {
  */
 add_action( 'init', 'purecharity_wp_trips_updater' );
 function purecharity_wp_trips_updater() {
-  if ( is_admin() ) { 
+  if ( is_admin() ) {
     $tr_config = array(
       'slug' => plugin_basename( __FILE__ ),
       'proper_folder_name' => 'purecharity-wp-trips',

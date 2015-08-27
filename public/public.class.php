@@ -121,9 +121,9 @@ class Purecharity_Wp_Trips_Public {
 
 		$scripts = '
 			<style>
-				a.pctrip-pure-button { background: '. $color .'; }	
-				.fr-filtering button { background: '.$color.' }		
-			</style> 
+				a.pctrip-pure-button { background: '. $color .'; }
+				.fr-filtering button { background: '.$color.' }
+			</style>
 		';
 
 		return $scripts;
@@ -136,7 +136,7 @@ class Purecharity_Wp_Trips_Public {
 	 */
 	public static function list_not_found(){
 		$html = self::live_search();
-		$html .= "<p>No Trips Found.</p>" . Purecharity_Wp_Base_Public::powered_by();;	
+		$html .= "<p>No Trips Found.</p>" . Purecharity_Wp_Base_Public::powered_by();;
 		return $html;
 	}
 
@@ -146,7 +146,7 @@ class Purecharity_Wp_Trips_Public {
 	 * @since    1.0.0
 	 */
 	public static function not_found(){
-		return "<p>Trip Not Found.</p>" . Purecharity_Wp_Base_Public::powered_by();;	
+		return "<p>Trip Not Found.</p>" . Purecharity_Wp_Base_Public::powered_by();;
 	}
 
 	/**
@@ -268,10 +268,9 @@ class Purecharity_Wp_Trips_Public {
 	 * @since    1.0.0
 	 */
 	public static function show(){
-
 		return self::custom_css().'
 			<div class="pctrip-container">
- 
+
 				<div class="pctrip-header pure_col pure_span_24">
 					<img src="'.self::$event->images->large.'">
 				</div>
@@ -296,12 +295,17 @@ class Purecharity_Wp_Trips_Public {
 					</div>
 
 					<div class="pctrip-sidebar pure_col pure_span_6">
-					
+
+						<div class="pctrip-sidebarsection">
+              <h4>Share</h4>
+              '.Purecharity_Wp_Base_Public::sharing_links(array(), self::$event->name).'
+            </div>
+
 						<div class="pctrip-sidebarsection">
 							<h4>Trip Costs</h4>
 							'.self::print_trip_tickets().'
 						</div>
-						
+
 						<div class="pctrip-sidebarsection">
 							<h4>Trip Information</h4>
 							<p><strong>Trip Type:</strong> '.self::print_trip_types().'</p>
