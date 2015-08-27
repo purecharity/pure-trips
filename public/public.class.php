@@ -309,7 +309,8 @@ class Purecharity_Wp_Trips_Public {
 						<div class="pctrip-sidebarsection">
 							<h4>Trip Information</h4>
 							<p><strong>Trip Type:</strong> '.self::print_trip_types().'</p>
-							<p><strong>Location:</strong> '.self::$event->location.'</p>
+              <p><strong>Region:</strong> '.self::$event->region.'</p>
+							'.self::print_trip_location().'
 							'.self::print_trip_tags().'
 						</div>
 
@@ -321,6 +322,19 @@ class Purecharity_Wp_Trips_Public {
 
 		';
 	}
+
+	/**
+	 * Print the country/location
+	 *
+	 * @since    1.0.0
+	 */
+	public static function print_trip_location(){
+    if(self::$event->public_location == ""){
+      return "<p><strong>Country:</strong> '.self::$event->country.'</p>";
+    }else{
+      return "<p><strong>Location:</strong> '.self::$event->location.'</p>";
+    }
+  }
 
 	/**
 	 * Print the register button
