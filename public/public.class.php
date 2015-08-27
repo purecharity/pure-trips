@@ -330,9 +330,9 @@ class Purecharity_Wp_Trips_Public {
 	 */
 	public static function print_trip_location(){
     if(self::$event->public_location == ""){
-      return "<p><strong>Country:</strong> '.self::$event->country.'</p>";
+      return "<p><strong>Country:</strong> ".self::$event->country."</p>";
     }else{
-      return "<p><strong>Location:</strong> '.self::$event->location.'</p>";
+      return "<p><strong>Location:</strong> ".self::$event->location."</p>";
     }
   }
 
