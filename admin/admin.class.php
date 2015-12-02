@@ -136,14 +136,16 @@ class Purecharity_Wp_Trips_Admin {
 	 */
 	public static function single_view_template_render(  ) { 
 		$options = get_option( 'purecharity_trips_settings' );
+		$templates = purecharity_get_templates();
 		?>
 		<select name="purecharity_trips_settings[single_view_template]">
 			<option value="">Inherit from the listing page</option>
-			<?php foreach(get_page_templates() as $template){ ?>
-				<option <?php echo $template == @$options['single_view_template'] ? 'selected' : '' ?>><?php echo $template ?></option>
+			<?php foreach($templates as $key => $template){ ?>
+				<option <?php echo $template == @$options['single_view_template'] ? 'selected' : '' ?> value="<?php echo $template; ?>"><?php echo "$key ($template)" ?></option>
 			<?php } ?>
 		</select>
 		<?php
+		
 	}
 
 	/**
