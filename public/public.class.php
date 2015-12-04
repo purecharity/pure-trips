@@ -300,7 +300,7 @@ class Purecharity_Wp_Trips_Public {
               <h4>Share</h4>
               '.Purecharity_Wp_Base_Public::sharing_links(array(), self::$event->name).'
               <a target="_blank" href="'.Purecharity_Wp_Base_Public::pc_url().'/'.self::$fundraiser->slug.'">
-			          <img src="' . plugins_url( '../images/share-purecharity.png', __FILE__ ) . '" >
+			          <img src="' . plugins_url( '../img/share-purecharity.png', __FILE__ ) . '" >
 			        </a>
             </div>
 
