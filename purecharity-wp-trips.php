@@ -16,7 +16,7 @@
  * Plugin Name:       Pure Charity Trips
  * Plugin URI:        http://purecharity.com/purecharity-wp-trips-uri/
  * Description:       Plugin to display Trips from the Pure Charity App with links to sign up for it
- * Version:           1.1.1
+ * Version:           1.1.2
  * Author:            Pure Charity
  * Author URI:        http://purecharity.com/
  * License:           GPL-2.0+
@@ -146,7 +146,7 @@ function set_pt_meta_tags(){
  */
 function gt_force_template() {
   try{
-    $options = get_option( 'purecharity_sponsorships_settings' );
+    $options = get_option( 'purecharity_trips_settings' );
     if($options['single_view_template'] == 'purecharity-plugin-template.php'){
       include(purecharity_plugin_template());
     }else{
