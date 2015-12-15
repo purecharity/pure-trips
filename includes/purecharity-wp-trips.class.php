@@ -359,7 +359,7 @@ class Purecharity_Wp_Trips {
 		
 		$options = get_option( 'purecharity_trips_settings' );
 
-		if(isset($_GET['event_id']) && isset($options['single_view_template']) && $options['single_view_template'] != ''){
+		if(isset($_GET['trip']) && isset($options['single_view_template']) && $options['single_view_template'] != ''){
 			add_action('template_redirect', 'gt_force_template');
 		}
 

@@ -87,9 +87,9 @@ class Purecharity_Wp_Trips_Shortcode {
 
     $opts['ends_at'] = self::is_past($opts['past']);
 
-    if(isset($_GET['event_id'])){
+    if(isset($_GET['trip'])){
       $options = array();
-      $options['event_id'] = $_GET['event_id'];
+      $options['trip'] = $_GET['trip'];
       return self::trip_shortcode($options);
     }else{
       $events = self::$base_plugin->api_call('events/?' . http_build_query(self::filtered_opts($opts)));
@@ -129,11 +129,11 @@ class Purecharity_Wp_Trips_Shortcode {
    */
   public static function trip_shortcode($atts){
     $options = shortcode_atts( array(
-      'event_id' => false
+      'trip' => false
     ), $atts );
 
-    if ($options['event_id']) {
-      $event = self::$base_plugin->api_call('events/'. $options['event_id']);
+    if ($options['trip']) {
+      $event = self::$base_plugin->api_call('events/'. $options['trip']);
       if ($event) {
         $event = $event->event;
         Purecharity_Wp_Trips_Public::$event = $event;
