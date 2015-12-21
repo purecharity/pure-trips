@@ -87,6 +87,10 @@ class Purecharity_Wp_Trips_Shortcode {
 
     $opts['ends_at'] = self::is_past($opts['past']);
 
+    if($opts['upcoming'] != 'false'){
+      $opts['upcoming'] = 'true';
+    }
+
     if(isset($_GET['trip'])){
       $options = array();
       $options['trip'] = $_GET['trip'];
