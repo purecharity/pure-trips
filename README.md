@@ -24,7 +24,7 @@ Possible parameters:
 * `starts_at` - YYYY-MM-DD date to only show trips that start after that date.
 * `ends_at` - YYYY-MM-DD date to only show trips that start before that date.
 * `past` - 'true' if you only want to show past trips.
-* `upcoming` - set to false if you only want to show events starting at any date
+* `include_past` - set to true if you want to show events starting at any date
 * `tag` - A tag to filter trips.
 * `sort` - Sort direction.
 
