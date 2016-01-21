@@ -92,6 +92,10 @@ a.pctrip-pure-button {
   width: 100%;
 }
 
+.pctrip-ticket a.pctrip-pure-button {
+  padding: 3px;
+}
+
 a.pctrip-pure-button:hover {
   color: #ccc !important;
 }

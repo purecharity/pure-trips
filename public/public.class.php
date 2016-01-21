@@ -412,10 +412,11 @@ class Purecharity_Wp_Trips_Public {
 		$tickets = '';
 		foreach(self::$event->tickets as $ticket){
 			$tickets .= '
-				<p>
+				<p class="pctrip-ticket">
 					<strong>'.$ticket->name.'</strong><br /><br />
 					<span class="pctrip-ticket-price">'.money_format('$%i', $ticket->price).'</span><br /><br />
-					'.$ticket->description.'
+					'.$ticket->description.'</br>
+					<a class="pctrip-pure-button" href="'.$ticket->public_url.'">Register</a>
 				</p>
 			';
 		}
