@@ -198,12 +198,14 @@ class Purecharity_Wp_Trips_Public {
 			 	<div class="pctrip-list-item pure_col pure_span_24">
 			 		<div class="pctrip-list-content pure_col pure_span_24">
 				 		<div class="pctrip-listing-avatar-container pure_col pure_span_4">
-							<a href="?trip='.$event->id.'"><div class="pctrip-listing-avatar" style="background-image: url('.$event->images->small.')"></div></a>
+							<a href="?trip='.$event->id.'">
+								<div class="pctrip-listing-avatar" style="background-image: url('.$event->images->small.')"></div>
+							</a>
 						</div>
 						<div class="pctrip-list-body-container pure_col pure_span_20">
 							<h3 class="pctrip-title"><a href="?trip='.$event->id.'">'.$event->name.'</a></h3>
 							<p class="pctrip-date">'.self::get_date_range($event->starts_at, $event->ends_at).'</p>
-							<p class="pctrip-grid-intro">'.$truncated.'</h4>
+							<p class="pctrip-grid-intro">'.strip_tags($truncated).'</h4>
 						</div>
 					</div>
 			 	</div>
@@ -236,13 +238,15 @@ class Purecharity_Wp_Trips_Public {
 			 	<div class="pctrip-grid-list-item pure_col pure_span_6">
 			 		<div class="pctrip-grid-list-content pure_col pure_span_24">
 				 		<div class="pctrip-listing-avatar-container pure_col pure_span_24">
-								<a href="?trip='.$event->id.'"><div class="pctrip-grid-listing-avatar pure_col pure_span_24" style="background-image: url('.$event->images->medium.')"></div></a>
+								<a href="?trip='.$event->id.'">
+									<div class="pctrip-grid-listing-avatar pure_col pure_span_24" style="background-image: url('.$event->images->medium.')"></div>
+								</a>
 							</div>
 						<div class="pctrip-grid-lower-content pure_col pure_span_24">
 							<p class="pctrip-grid-title">'.$event->name.'</h4>
 							<p class="pctrip-date">'.self::get_date_range($event->starts_at, $event->ends_at).'</p>
 
-							<p class="pctrip-grid-intro">'.$truncated.'</h4>
+							<p class="pctrip-grid-intro">'.strip_tags($truncated).'</h4>
 					</div>
 					<ul class="pctrip-list-actions pure_col pure_span_24">
 						<li><a href="?trip='.$event->id.'">More Info</a></li>
