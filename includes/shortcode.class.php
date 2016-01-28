@@ -68,24 +68,33 @@ class Purecharity_Wp_Trips_Shortcode {
   public static function trips_shortcode($atts)
   {
     $opts = shortcode_atts( array(
-      'limit'     => 10,
-      'country'   => get_query_var('country'),
-      'region'    => get_query_var('region'),
-      'cause'     => get_query_var('cause'),
-      'starts_at' => get_query_var('starts_at'),
-      'ends_at'   => get_query_var('ends_at'),
-      'past'      => get_query_var('past'),
-      'upcoming'  => get_query_var('upcoming'),
-      'grid'      => get_query_var('grid'),
-      'tag'       => get_query_var('tag'),
-      'sort'      => get_query_var('sort'),
-      'dir'       => get_query_var('dir'),
-      'trip_tag'  => (isset($_GET['trip_tag']) ? $_GET['trip_tag'] : get_query_var('trip_tag')),
-      'query'     => (isset($_GET['query']) ? $_GET['query'] : get_query_var('query')),
-      'page'      => (isset($_GET['_page']) ? $_GET['_page'] : get_query_var('_page'))
+      'limit'         => 10,
+      'country'       => get_query_var('country'),
+      'region'        => get_query_var('region'),
+      'cause'         => get_query_var('cause'),
+      'starts_at'     => get_query_var('starts_at'),
+      'ends_at'       => get_query_var('ends_at'),
+      'past'          => get_query_var('past'),
+      'upcoming'      => get_query_var('upcoming'),
+      'past_events'   => get_query_var('past_events'),
+      'include_past'  => get_query_var('include_past'),
+      'grid'          => get_query_var('grid'),
+      'tag'           => get_query_var('tag'),
+      'sort'          => get_query_var('sort'),
+      'dir'           => get_query_var('dir'),
+      'trip_tag'      => (isset($_GET['trip_tag']) ? $_GET['trip_tag'] : get_query_var('trip_tag')),
+      'query'         => (isset($_GET['query']) ? $_GET['query'] : get_query_var('query')),
+      'page'          => (isset($_GET['_page']) ? $_GET['_page'] : get_query_var('_page'))
     ), $atts );
 
     $opts['ends_at'] = self::is_past($opts['past']);
+
+    if($opts['upcoming'] != 'false' && !$opts['include_past']){
+      $opts['upcoming'] = 'true';
+    }
+    if($opts['include_past'] == 'true'){
+      unset($opts['upcoming']);
+    }
 
     if(isset($_GET['trip'])){
       $options = array();
