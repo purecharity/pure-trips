@@ -329,7 +329,7 @@ class Purecharity_Wp_Trips_Public {
 	/**
 	 * Print the tickets area
 	 *
-	 * @since    1.1.3
+	 * @since    1.1.4
 	 */
 	public static function print_tickets_area(){	
 		$html = '';	    	
