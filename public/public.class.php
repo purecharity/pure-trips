@@ -304,14 +304,11 @@ class Purecharity_Wp_Trips_Public {
               <h4>Share</h4>
               '.Purecharity_Wp_Base_Public::sharing_links(array(), self::$event->name).'
               <a target="_blank" href="'.Purecharity_Wp_Base_Public::pc_url().'/'.self::$event->slug.'">
-			          <img src="' . plugins_url( '../img/share-purecharity.png', __FILE__ ) . '" >
+			          <img src="' . plugins_url( 'img/share-purecharity.png', __FILE__ ) . '" >
 			        </a>
             </div>
 
-						<div class="pctrip-sidebarsection">
-							<h4>Trip Costs</h4>
-							'.self::print_trip_tickets().'
-						</div>
+            '.self::print_tickets_area().'
 
 						<div class="pctrip-sidebarsection">
 							<h4>Trip Information</h4>
@@ -327,6 +324,24 @@ class Purecharity_Wp_Trips_Public {
 			</div>
 
 		';
+	}
+
+	/**
+	 * Print the tickets area
+	 *
+	 * @since    1.1.4
+	 */
+	public static function print_tickets_area(){	
+		$html = '';	    	
+		if(self::$event->registrations_state == 'open' && count(self::$event->tickets) > 0){
+			$html .= '
+				<div class="pctrip-sidebarsection">
+					<h4>Trip Costs</h4>
+					'.self::print_trip_tickets().'
+				</div>
+			';
+		}
+		return $html;
 	}
 
 	/**
@@ -413,14 +428,16 @@ class Purecharity_Wp_Trips_Public {
 	 * @since    1.0.0
 	 */
 	public static function print_trip_tickets(){
+		    	
 		$tickets = '';
 		foreach(self::$event->tickets as $ticket){
+			    	
 			$tickets .= '
 				<p class="pctrip-ticket">
 					<strong>'.$ticket->name.'</strong><br /><br />
 					<span class="pctrip-ticket-price">'.money_format('$%i', $ticket->price).'</span><br /><br />
 					'.$ticket->description.'</br>
-					'. count(self::$event->tickets) > 1 ? '<a class="pctrip-pure-button" href="'.$ticket->public_url.'">Register</a>' : '' .'
+					'. (count(self::$event->tickets) > 1 ? '<a class="pctrip-pure-button" href="'.$ticket->public_url.'">Register</a>' : '') .'
 				</p>
 			';
 		}
