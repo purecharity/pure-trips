@@ -26,7 +26,9 @@ Possible parameters:
 * `past` - 'true' if you only want to show past trips.
 * `include_past` - set to true if you want to show events starting at any date
 * `tag` - A tag to filter trips.
-* `sort` - Sort direction.
+* `status` - (published|closed) Status of the trips
+* `sort` - Sort parameter.
+* `dir` - Sort direction.
 
 ### Single Trip
 `[trip slug=trip-slug]`
@@ -58,7 +60,9 @@ Possible Attributes:
 * `query` - A search query for trips.
 * `upcoming` - set to false if you only want to show events starting at any date
 * `tag` - A tag to filter trips.
-* `sort` - Sort direction.
+* `status` - (published|closed) Status of the trips
+* `sort` - Sort parameter.
+* `dir` - Sort direction.
 
 Returns:
 A Trip `Object`

@@ -82,6 +82,7 @@ class Purecharity_Wp_Trips_Shortcode {
       'tag'           => get_query_var('tag'),
       'sort'          => get_query_var('sort'),
       'dir'           => get_query_var('dir'),
+      'status'        => get_query_var('status'),
       'trip_tag'      => (isset($_GET['trip_tag']) ? $_GET['trip_tag'] : get_query_var('trip_tag')),
       'query'         => (isset($_GET['query']) ? $_GET['query'] : get_query_var('query')),
       'page'          => (isset($_GET['_page']) ? $_GET['_page'] : get_query_var('_page'))
