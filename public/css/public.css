@@ -198,10 +198,10 @@ ul.pctrip-costs li:last-child {
   float: left;
 }
 
-
 .pctrip-grid-lower-content {
   min-height: 200px;
 }
+
 .pctrip-grid-lower-content p,
 .pctrip-grid-lower-content h4 {
   padding: 5px 10px !important;
@@ -209,7 +209,13 @@ ul.pctrip-costs li:last-child {
   border-bottom: none;
   margin: 0;
 }
-.pctrip-grid-lower-content p {
+
+.pctrip-grid-lower-content h4 {
+  font-size: 18px;
+}
+
+.pctrip-grid-lower-content p {  
+  font-size: 14px;
   float: left;
 }
 .pctrip-grid-location {
