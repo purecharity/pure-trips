@@ -123,7 +123,7 @@ class Purecharity_Wp_Trips_Public {
 			<style>
 				a.pctrip-pure-button { background: '. $color .'; }
 				.fr-filtering button { background: '. $color .' }
-				.pctrip-list-actions li a:hover { background: '. $color .' }
+				.pctrip-list-actions li a:hover { background: '. $color .' !important }
 			</style>
 		';
 
@@ -235,7 +235,6 @@ class Purecharity_Wp_Trips_Public {
 
 		$counter = 0;
 		foreach(self::$events->events as $event){
-			$counter++;
 			$truncated = (strlen($event->description) > 100) ? substr($event->description, 0, 100) . '...' : $event->description;
 			$html .= '
 			 	<div class="pctrip-grid-list-item pure_col pure_span_6">
@@ -258,14 +257,14 @@ class Purecharity_Wp_Trips_Public {
 					<ul class="pctrip-list-actions pure_col pure_span_24">
 						<li><a href="?trip='.$event->id.'">More Info</a></li>
 					</ul>
-					</div>';
-			if($counter == 4){
-				$html .= '<div class="clearfix"></div>';
-				$counter = 0;
-			}
-			$html .= '		
-			 	</div>
-		 	';
+					</div>		
+			 	</div>';
+      if($counter == 3){
+        $html .= '<div class="clearfix"></div>';
+        $counter = 0;
+      }else{
+      	$counter ++;
+      }
 		}
 
 		// Paginator

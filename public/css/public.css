@@ -1,3 +1,13 @@
+.pctrip-list-container .clearfix { clear:both; }
+.pctrip-list-container .clearfix:before,
+.pctrip-list-container .clearfix:after {
+  content: " ";
+  display: table;
+}
+.pctrip-list-container .clearfix:after {
+  clear: both;
+}
+
 .fr-filtering button {
   border: none;
   color: #FFF;
