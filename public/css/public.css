@@ -1,3 +1,13 @@
+.pctrip-list-container .clearfix { clear:both; }
+.pctrip-list-container .clearfix:before,
+.pctrip-list-container .clearfix:after {
+  content: " ";
+  display: table;
+}
+.pctrip-list-container .clearfix:after {
+  clear: both;
+}
+
 .fr-filtering button {
   border: none;
   color: #FFF;
@@ -43,14 +53,13 @@
 }
 
 .pctrip-avatar {
-    width: 125px;
-    height: 125px;
-    display: block;
-    margin-top: -60px;
-    margin-left: 20px;
+  width: 125px;
+  height: 125px;
+  display: block;
+  margin-top: -60px;
+  margin-left: 20px;
   border-radius: 100%;
   background-size: 100%;
-  border-bottom: 1px solid #f0f0f0;
 }
 
 .pctrip-list-body-container {
@@ -199,17 +208,39 @@ ul.pctrip-costs li:last-child {
   float: left;
 }
 
-
 .pctrip-grid-lower-content {
-  padding: 0 10px;
-  height: 200px;
+  min-height: 200px;
 }
 
-.pctrip-grid-list-content .pctrip-listing-avatar-container {
+.pctrip-grid-lower-content p,
+.pctrip-grid-lower-content h4 {
+  padding: 5px 10px !important;
+  border-top: 1px solid #EEE !important;
+  border-bottom: none;
+  margin: 0;
+}
+
+.pctrip-grid-lower-content h4 {
+  font-size: 18px;
+}
+
+.pctrip-grid-lower-content p {  
+  font-size: 14px;
+  float: left;
+}
+.pctrip-grid-location {
+  width: 100%;
+  font-style: italic;
+  font-size: .9em;
 }
 
 .pctrip-grid-list-content .pctrip-listing-avatar {
   float: none;  
+}
+
+.pctrips-location-pin {
+  width: 12px;
+  opacity: .5;
 }
 
 
@@ -220,7 +251,7 @@ h3.pctrip-title  {
 
 .pctrip-date {
   font-size: .9em;
-  font-weight: bold;
+  font-style: italic;
   width: 100%;
 }
 
@@ -270,7 +301,7 @@ h3.pctrip-title  {
 }
 
 .pctrip-grid-list-item {
-  background: #EEEEEE;
+  border: 1px solid #EEE;
   padding: 0px;
   margin-right: 20px;
   margin-bottom: 20px; 
@@ -319,8 +350,7 @@ h3.pctrip-title  {
   padding: 0;
   margin: 0; 
   width: 100%;
-  background: #E11E1;
-  border-top: 1px solid #fff;
+  border-top: 1px solid #EEE;
 }
 
 .pctrip-grid-list-item ul.pctrip-list-actions li {

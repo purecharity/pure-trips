@@ -122,7 +122,8 @@ class Purecharity_Wp_Trips_Public {
 		$scripts = '
 			<style>
 				a.pctrip-pure-button { background: '. $color .'; }
-				.fr-filtering button { background: '.$color.' }
+				.fr-filtering button { background: '. $color .' }
+				.pctrip-list-actions li a:hover { background: '. $color .' !important }
 			</style>
 		';
 
@@ -232,6 +233,7 @@ class Purecharity_Wp_Trips_Public {
 		$html .= '<div class="pctrip-list-container is-grid pure_row">';
 		$html .= self::live_search();
 
+		$counter = 0;
 		foreach(self::$events->events as $event){
 			$truncated = (strlen($event->description) > 100) ? substr($event->description, 0, 100) . '...' : $event->description;
 			$html .= '
@@ -243,17 +245,26 @@ class Purecharity_Wp_Trips_Public {
 								</a>
 							</div>
 						<div class="pctrip-grid-lower-content pure_col pure_span_24">
-							<p class="pctrip-grid-title">'.$event->name.'</h4>
+							<h4 class="pctrip-grid-title">'.$event->name.'</h4>
 							<p class="pctrip-date">'.self::get_date_range($event->starts_at, $event->ends_at).'</p>
+							<p class="pctrip-grid-location">
+								<img class="pctrips-location-pin" src="'.plugins_url( 'img/location-pin.png', __FILE__ ).'" />
+								'.$event->country.'
+							</p>
 
-							<p class="pctrip-grid-intro">'.strip_tags($truncated).'</h4>
+							<p class="pctrip-grid-intro">'.strip_tags($truncated).'</p>
 					</div>
 					<ul class="pctrip-list-actions pure_col pure_span_24">
 						<li><a href="?trip='.$event->id.'">More Info</a></li>
 					</ul>
-					</div>
-			 	</div>
-		 	';
+					</div>		
+			 	</div>';
+      if($counter == 3){
+        $html .= '<div class="clearfix"></div>';
+        $counter = 0;
+      }else{
+      	$counter ++;
+      }
 		}
 
 		// Paginator
