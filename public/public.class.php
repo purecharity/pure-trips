@@ -22,7 +22,7 @@
  */
 class Purecharity_Wp_Trips_Public {
 
-  const DATE_FORMAT = "M j, Y";
+  const DATE_FORMAT = "F j, Y";
   const MONTH_FORMAT = "M Y";
 
 	/**
