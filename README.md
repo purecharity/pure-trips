@@ -22,12 +22,16 @@ In order to install the plugin:
 Possible parameters:
 * `country` - The country to fetch trips from.
 * `region` - The region to fetch events from.
+* `cause` - Cause to filter by
 * `query` - A search query for trips.
 * `starts_at` - YYYY-MM-DD date to only show trips that start after that date.
 * `ends_at` - YYYY-MM-DD date to only show trips that start before that date.
 * `past` - 'true' if you only want to show past trips.
+* `upcoming` - 'true' if you only want to show upcoming trips.
 * `include_past` - set to true if you want to show events starting at any date
+* `past_events` - set to true if you want to show only past events
 * `tag` - A tag to filter trips.
+* `grid` - set to true to display as a grid
 * `sort` - Sort direction.
 
 ### Single Trip
