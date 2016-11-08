@@ -102,7 +102,7 @@ class Purecharity_Wp_Trips {
 	 * @since    1.0.0
 	 */
   static function base_present() {
-		return in_array( 'purecharity-wp-base/purecharity-wp-base.php', (array) get_option( 'active_plugins', array() ) );
+		return in_array( get_option( 'pure_base_name' ) . '/purecharity-wp-base.php', (array) get_option( 'active_plugins', array() ) );
   }
 
 	/**
