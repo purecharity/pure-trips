@@ -65,57 +65,69 @@ class Purecharity_Wp_Trips_Shortcode {
    *
    * @since    1.0.0
    */
-  public static function trips_shortcode($atts)
-  {
-    $opts = shortcode_atts( array(
-      'limit'         => 10,
-      'country'       => get_query_var('country'),
-      'region'        => get_query_var('region'),
-      'cause'         => get_query_var('cause'),
-      'starts_at'     => get_query_var('starts_at'),
-      'ends_at'       => get_query_var('ends_at'),
-      'past'          => get_query_var('past'),
-      'upcoming'      => get_query_var('upcoming'),
-      'past_events'   => get_query_var('past_events'),
-      'include_past'  => get_query_var('include_past'),
-      'grid'          => get_query_var('grid'),
-      'tag'           => get_query_var('tag'),
-      'sort'          => get_query_var('sort'),
-      'dir'           => get_query_var('dir'),
-      'trip_tag'      => (isset($_GET['trip_tag']) ? $_GET['trip_tag'] : get_query_var('trip_tag')),
-      'query'         => (isset($_GET['query']) ? $_GET['query'] : get_query_var('query')),
-      'page'          => (isset($_GET['_page']) ? $_GET['_page'] : get_query_var('_page'))
-    ), $atts );
+    public static function trips_shortcode( $atts ) {
+        $opts = shortcode_atts( array(
+            'limit'         => 10,
+            'country'       => get_query_var( 'country' ),
+            'partner_slug'  => get_query_var( 'partner_slug' ),
+            'region'        => get_query_var( 'region' ),
+            'cause'         => get_query_var( 'cause' ),
+            'starts_at'     => get_query_var( 'starts_at' ),
+            'ends_at'       => get_query_var( 'ends_at' ),
+            'past'          => get_query_var( 'past' ),
+            'upcoming'      => get_query_var( 'upcoming' ),
+            'past_events'   => get_query_var( 'past_events' ),
+            'include_past'  => get_query_var( 'include_past' ),
+            'grid'          => get_query_var( 'grid' ),
+            'tag'           => get_query_var( 'tag' ),
+            'sort'          => get_query_var( 'sort' ),
+            'dir'           => get_query_var( 'dir' ),
+            'trip_tag'      => ( isset( $_GET['trip_tag'] ) ? $_GET['trip_tag'] : get_query_var( 'trip_tag' ) ),
+            'query'         => ( isset( $_GET['query'] ) ? $_GET['query'] : get_query_var( 'query' ) ),
+            'page'          => ( isset( $_GET['_page'] ) ? $_GET['_page'] : get_query_var( '_page' ) )
+        ), $atts );
 
-    $opts['ends_at'] = self::is_past($opts['past']);
+        $opts['ends_at'] = self::is_past( $opts['past'] );
 
-    if($opts['upcoming'] != 'false' && !$opts['include_past']){
-      $opts['upcoming'] = 'true';
-    }
-    if($opts['include_past'] == 'true'){
-      unset($opts['upcoming']);
-    }
-
-    if(isset($_GET['trip'])){
-      $options = array();
-      $options['trip'] = $_GET['trip'];
-      return self::trip_shortcode($options);
-    }else{
-      $events = self::$base_plugin->api_call('events/?' . http_build_query(self::filtered_opts($opts)));
-
-      if ($events && count($events->events) > 0) {
-        Purecharity_Wp_Trips_Public::$events = $events;
-        if($opts['grid']){
-          return Purecharity_Wp_Trips_Public::listing_grid();
-        }else{
-          return Purecharity_Wp_Trips_Public::listing();
+        if( $opts['upcoming'] != 'false' && !$opts['include_past'] ) {
+            $opts['upcoming'] = 'true';
         }
-      }else{
-        return Purecharity_Wp_Trips_Public::list_not_found();
-      };
-    }
+        
+        if( $opts['include_past'] == 'true' ) {
+            unset( $opts['upcoming'] );
+        }
 
-  }
+        if( isset( $_GET['trip'] ) ) {
+            $options = array();
+            $options['trip'] = $_GET['trip'];
+            return self::trip_shortcode( $options );
+        } else {
+            $events = self::$base_plugin->api_call( 'events/?' . http_build_query( self::filtered_opts( $opts ) ) );
+            
+            if ( $events && count( $events->events ) > 0 ) {
+                if( isset( $opts['partner_slug'] ) && $opts['partner_slug'] != '') {
+                    foreach( $events->events as $k => $item ) {
+                        if( $item->field_partner_slug != $opts['partner_slug'] ) {
+                            unset( $events->events[$k] );
+                        }
+                    }
+                }
+                
+                if( count( $fundraisers->external_fundraisers ) == 0 ) {
+                    return Purecharity_Wp_Trips_Public::list_not_found();
+                } else {
+                    Purecharity_Wp_Trips_Public::$events = $events;
+                    if( $opts['grid'] ) {
+                        return Purecharity_Wp_Trips_Public::listing_grid();
+                    } else {
+                        return Purecharity_Wp_Trips_Public::listing();
+                    }
+                }
+            } else {
+                return Purecharity_Wp_Trips_Public::list_not_found();
+            }
+        }
+    }
 
   /**
    * Adds parameter to show only past trips.
