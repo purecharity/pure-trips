@@ -112,8 +112,8 @@ class Purecharity_Wp_Trips_Shortcode {
                         }
                     }
                 }
-                
-                if( count( $fundraisers->external_fundraisers ) == 0 ) {
+
+                if( count( $events->events ) == 0 ) {
                     return Purecharity_Wp_Trips_Public::list_not_found();
                 } else {
                     Purecharity_Wp_Trips_Public::$events = $events;
