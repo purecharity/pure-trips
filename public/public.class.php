@@ -237,27 +237,27 @@ class Purecharity_Wp_Trips_Public {
 		foreach(self::$events->events as $event){
 			$truncated = (strlen($event->description) > 100) ? substr($event->description, 0, 100) . '...' : $event->description;
 			$html .= '
-			 	<div class="pctrip-grid-list-item pure_col pure_span_6">
-			 		<div class="pctrip-grid-list-content pure_col pure_span_24">
-				 		<div class="pctrip-listing-avatar-container pure_col pure_span_24">
-								<a href="?trip='.$event->id.'">
-									<div class="pctrip-grid-listing-avatar pure_col pure_span_24" style="background-image: url('.$event->images->medium.')"></div>
-								</a>
-							</div>
-						<div class="pctrip-grid-lower-content pure_col pure_span_24">
+			 	<div class="pctrip-grid-list-item pure_span_6">
+			 		<div class="pctrip-grid-list-content pure_span_24">
+				 		<div class="pctrip-listing-avatar-container pure_span_24">
+							<a href="?trip='.$event->id.'">
+								<div class="pctrip-grid-listing-avatar pure_span_24" style="background-image: url('.$event->images->medium.')"></div>
+							</a>
+						</div>
+            <div class="clearfix"></div>
+						<div class="pctrip-grid-lower-content pure_span_24">
 							<h4 class="pctrip-grid-title">'.$event->name.'</h4>
 							<p class="pctrip-date">'.self::get_date_range($event->starts_at, $event->ends_at).'</p>
 							<p class="pctrip-grid-location">
 								<img class="pctrips-location-pin" src="'.plugins_url( 'img/location-pin.png', __FILE__ ).'" />
 								'.$event->country.'
 							</p>
-
 							<p class="pctrip-grid-intro">'.strip_tags($truncated).'</p>
+  					</div>
+  					<ul class="pctrip-list-actions pure_span_24">
+  						<li><a href="?trip='.$event->id.'">More Info</a></li>
+  					</ul>
 					</div>
-					<ul class="pctrip-list-actions pure_col pure_span_24">
-						<li><a href="?trip='.$event->id.'">More Info</a></li>
-					</ul>
-					</div>		
 			 	</div>';
       if($counter == 3){
         $html .= '<div class="clearfix"></div>';
@@ -342,8 +342,8 @@ class Purecharity_Wp_Trips_Public {
 	 *
 	 * @since    1.1.4
 	 */
-	public static function print_tickets_area(){	
-		$html = '';	    	
+	public static function print_tickets_area(){
+		$html = '';
 		if(self::$event->registrations_state == 'open' && count(self::$event->tickets) > 0){
 			$html .= '
 				<div class="pctrip-sidebarsection">
@@ -380,7 +380,7 @@ class Purecharity_Wp_Trips_Public {
 	 *
 	 * @since    1.0.0
 	 */
-	public static function print_register_button(){		    	
+	public static function print_register_button(){
 		if(self::$event->registrations_state == 'open' && count(self::$event->tickets) == 1){
 			return '
 				<a class="pctrip-pure-button" href="'.self::$event->public_url.'/registrations/new?ticket_id='.self::$event->tickets[0]->id.'">Register</a>
@@ -439,10 +439,10 @@ class Purecharity_Wp_Trips_Public {
 	 * @since    1.0.0
 	 */
 	public static function print_trip_tickets(){
-		    	
+
 		$tickets = '';
 		foreach(self::$event->tickets as $ticket){
-			    	
+
 			$tickets .= '
 				<p class="pctrip-ticket">
 					<strong>'.$ticket->name.'</strong><br /><br />
