@@ -383,7 +383,7 @@ class Purecharity_Wp_Trips_Public {
 	public static function print_register_button(){		    	
 		if(self::$event->registrations_state == 'open' && count(self::$event->tickets) == 1){
 			return '
-				<a class="pctrip-pure-button" href="'.self::$event->public_url.'">Register</a>
+				<a class="pctrip-pure-button" href="'.self::$event->public_url.'/registrations/new?ticket_id='.self::$event->tickets[0]->id.'">Register</a>
 			';
 		}else{
 			return '';
@@ -448,7 +448,7 @@ class Purecharity_Wp_Trips_Public {
 					<strong>'.$ticket->name.'</strong><br /><br />
 					<span class="pctrip-ticket-price">'.money_format('$%i', $ticket->price).'</span><br /><br />
 					'.$ticket->description.'</br>
-					'. (count(self::$event->tickets) > 1 ? '<a class="pctrip-pure-button" href="'.$ticket->public_url.'">Register</a>' : '') .'
+					'. (count(self::$event->tickets) > 1 ? '<a class="pctrip-pure-button" href="'.$ticket->public_url.'/registrations/new?ticket_id='.$ticket->id.'">Register</a>' : '') .'
 				</p>
 			';
 		}
