@@ -22,7 +22,7 @@
  */
 class Purecharity_Wp_Trips_Public {
 
-  const DATE_FORMAT = "M j, Y";
+  const DATE_FORMAT = "F j, Y";
   const MONTH_FORMAT = "M Y";
 
 	/**
@@ -206,7 +206,8 @@ class Purecharity_Wp_Trips_Public {
 						<div class="pctrip-list-body-container pure_col pure_span_20">
 							<h3 class="pctrip-title"><a href="?trip='.$event->id.'">'.$event->name.'</a></h3>
 							<p class="pctrip-date">'.self::get_date_range($event->starts_at, $event->ends_at).'</p>
-							<p class="pctrip-grid-intro">'.strip_tags($truncated).'</h4>
+							<p class="pctrip-grid-intro">'.$event->description.'</h4>
+							<p style="font-style: italic;"><a href="?trip='.$event->id.'">Read More</a></p>
 						</div>
 					</div>
 			 	</div>
