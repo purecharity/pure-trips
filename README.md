@@ -24,6 +24,7 @@ Possible parameters:
 * `region` - The region to fetch events from.
 * `cause` - Cause to filter by
 * `query` - A search query for trips.
+* `partner_slug` - Filter result data by this field.
 * `starts_at` - YYYY-MM-DD date to only show trips that start after that date.
 * `ends_at` - YYYY-MM-DD date to only show trips that start before that date.
 * `past` - 'true' if you only want to show past trips.
