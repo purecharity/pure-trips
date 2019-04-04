@@ -467,5 +467,7 @@ h3.pctrip-title  {
     margin-bottom: 20px;
   }
 
-  
+  .pctrip-header.pure_col.pure_span_24 {
+    margin-left: 0px !important;
+    }
 }
